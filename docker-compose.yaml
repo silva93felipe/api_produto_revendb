@@ -1,0 +1,20 @@
+version: '3'
+services:
+  revenDb:
+    image: ravendb/ravendb:ubuntu-latest
+    ports:
+      - "8080:8080"
+      - "38888:38888"
+    networks:
+      - produto-network
+  app:
+    build: .
+    depends_on:
+      - revenDb
+    ports:
+      - "5555:80"
+    networks:
+      - produto-network
+networks: 
+    produto-network:
+        driver: bridge
