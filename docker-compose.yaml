@@ -1,20 +1,27 @@
-version: '3'
+version: '3.8'
+
 services:
-  revenDb:
-    image: ravendb/ravendb:ubuntu-latest
+  ravendb:
+    image: ravendb/ravendb:latest
     ports:
       - "8080:8080"
-      - "38888:38888"
+    volumes:
+      - ravendb-data:/var/lib/ravendb/Data
     networks:
-      - produto-network
-  app:
+      - my-network
+
+  custom-image:
     build: .
-    depends_on:
-      - revenDb
     ports:
       - "5555:80"
+    depends_on:
+      - ravendb
     networks:
-      - produto-network
-networks: 
-    produto-network:
-        driver: bridge
+      - my-network
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  ravendb-data:

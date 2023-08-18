@@ -11,7 +11,7 @@ namespace ShopRevendb.Repository
 {
     public class CategoryRepository
     {
-         private IDocumentSession Session {get; set;}
+        private IDocumentSession Session {get; set;}
         private IDocumentStore Conn {get; set;}
 
         public async Task Add(Category cat){
