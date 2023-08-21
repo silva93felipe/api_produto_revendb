@@ -1,3 +1,5 @@
+using ShopRevendb.Middleware;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -21,5 +23,12 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseMiddleware(typeof(ErrorMiddleware));
+// app.Use(async(ctx, next) =>{
+
+//     Console.WriteLine("Sou um middleware");
+//     await next.Invoke();
+// });
 
 app.Run();

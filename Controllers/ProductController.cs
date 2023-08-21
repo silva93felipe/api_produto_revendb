@@ -23,12 +23,31 @@ namespace ShopRevendb.Controllers
         {
             await _productRepository.Add(product);
             return Ok();
+            // try
+            // {
+            // }
+            // catch (Exception e)
+            // {
+            //     Console.WriteLine(e.Message);
+            //     //throw;
+
+            //     return BadRequest();
+            // }
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetAll()
         {
             return Ok(await _productRepository.GetAll());
+            // try
+            // {
+            // }
+            // catch (Exception e)
+            // {
+            //     Console.WriteLine(e.Message);
+            //     //throw;
+            //     return BadRequest();
+            // }
         }
     }
 }

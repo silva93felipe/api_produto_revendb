@@ -22,12 +22,30 @@ namespace ShopRevendb.Controllers
         {
             await _categoryRepository.Add(product);
             return Ok();
+            //  try
+            // {
+            // }
+            // catch (Exception e)
+            // {
+            //     Console.WriteLine(e.Message);
+            //     //throw;
+            //     return BadRequest();
+            // }
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetAll()
         {
-            return Ok(await _categoryRepository.GetAll());
+            return Ok(await _categoryRepository.GetAll());                
+            // try
+            // {
+            // }
+            // catch (Exception e)
+            // {
+            //     Console.WriteLine(e.Message);
+            //     //throw;
+            //     return BadRequest();
+            // }
         }
     }
 }
